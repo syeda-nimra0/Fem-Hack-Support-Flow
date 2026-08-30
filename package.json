@@ -1,0 +1,16 @@
+{
+  "name": "supportflow-mern",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SupportFlow — AI-assisted customer support desk built on the MERN stack (MongoDB Atlas, Express.js, React, Node.js) with Gemini AI triage, realtime Socket.IO and JWT auth.",
+  "scripts": {
+    "install-all": "npm install && npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently -n SERVER,CLIENT -c blue,green \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "seed": "npm run seed --prefix server",
+    "build": "npm run build --prefix client",
+    "start": "npm start --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

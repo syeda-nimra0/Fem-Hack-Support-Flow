@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Favicon: light/dark brand marks. The dynamic link follows the site theme;
+         the media-query links cover first visits before any script runs. -->
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-light.png" />
+    <link rel="icon" type="image/png" sizes="48x48" media="(prefers-color-scheme: light)" href="/favicon-light.png" />
+    <link rel="icon" type="image/png" sizes="48x48" media="(prefers-color-scheme: dark)" href="/favicon-dark.png" />
+    <link id="favicon-dynamic" rel="icon" type="image/png" sizes="48x48" href="/favicon-light.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="SupportFlow is an AI-assisted customer support desk: customers submit tickets, Gemini AI triages category, priority and summary, agents review and resolve — in real time. Built with the MERN stack."
+    />
+    <meta
+      name="keywords"
+      content="SupportFlow, customer support, help desk, AI triage, ticketing, MERN stack, React, Express, MongoDB, Node.js"
+    />
+    <meta property="og:title" content="SupportFlow — AI-Assisted Customer Support Desk" />
+    <meta
+      property="og:description"
+      content="Submit tickets, let AI triage them, and resolve issues in real time with your support team."
+    />
+    <meta property="og:site_name" content="SupportFlow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="SupportFlow — tickets, AI, resolved." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SupportFlow — AI-Assisted Customer Support Desk" />
+    <meta
+      name="twitter:description"
+      content="Submit tickets, let AI triage them, and resolve issues in real time with your support team."
+    />
+    <meta name="twitter:image" content="/og-image.png" />
+    <title>SupportFlow — AI-Assisted Customer Support Desk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Apply the persisted theme before first paint to avoid a flash,
+      // and point the dynamic favicon at the matching brand mark.
+      (function () {
+        try {
+          var t = localStorage.getItem("supportflow-theme");
+          if (t === "dark") document.documentElement.classList.add("dark");
+          var icon = document.getElementById("favicon-dynamic");
+          if (icon) icon.href = t === "dark" ? "/favicon-dark.png" : "/favicon-light.png";
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

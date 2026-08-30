@@ -1,0 +1,31 @@
+{
+  "name": "supportflow-api",
+  "version": "1.0.0",
+  "description": "SupportFlow — AI-assisted customer support desk API (Express.js + Node.js + MongoDB Atlas + Socket.IO)",
+  "type": "module",
+  "main": "api/index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "seed": "node src/seed.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.1",
+    "socket.io": "^4.7.5"
+  },
+  "optionalDependencies": {
+    "mongodb-memory-server": "^10.1.2",
+    "z-ai-web-dev-sdk": "^0.0.18"
+  },
+  "devDependencies": {
+    "socket.io-client": "^4.8.3"
+  }
+}

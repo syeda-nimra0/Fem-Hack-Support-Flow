@@ -1,0 +1,437 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-poppins);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* SupportFlow brand palette */
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-deep: var(--brand-deep);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-status-new: var(--status-new);
+  --color-status-assigned: var(--status-assigned);
+  --color-status-progress: var(--status-progress);
+  --color-status-resolved: var(--status-resolved);
+  --color-priority-high: var(--priority-high);
+  --color-priority-medium: var(--priority-medium);
+  --color-priority-low: var(--priority-low);
+}
+
+/* ---------------------------------------------------------------------------
+   SupportFlow theme — LIGHT
+   Brand: #3368A0 (primary) · #66A3BF (secondary) · #F2EFE7 (background)
+   Solid colors only — no gradients by design.
+--------------------------------------------------------------------------- */
+:root {
+  --radius: 0.75rem;
+
+  /* Poppins is loaded via Google Fonts in index.html (Next.js next/font replacement) */
+  --font-poppins: "Poppins", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+
+  --brand: #3368a0;
+  --brand-soft: #66a3bf;
+  --brand-deep: #26517c;
+
+  --background: #f2efe7;
+  --foreground: #17212b;
+  --surface: #ffffff;
+  --surface-2: #e9e5d9;
+  --ink: #17212b;
+
+  --card: #ffffff;
+  --card-foreground: #17212b;
+  --popover: #ffffff;
+  --popover-foreground: #17212b;
+
+  --primary: #3368a0;
+  --primary-foreground: #f2efe7;
+  --secondary: #66a3bf;
+  --secondary-foreground: #10202e;
+
+  --muted: #eae6da;
+  --muted-foreground: #5c6b7a;
+  --accent: #dde7f0;
+  --accent-foreground: #26517c;
+
+  --destructive: #b5483f;
+  --border: #d9d3c4;
+  --input: #cfc9ba;
+  --ring: #3368a0;
+
+  --chart-1: #3368a0;
+  --chart-2: #66a3bf;
+  --chart-3: #3e8e6d;
+  --chart-4: #b98a2f;
+  --chart-5: #7a6aae;
+
+  --sidebar: #ffffff;
+  --sidebar-foreground: #17212b;
+  --sidebar-primary: #3368a0;
+  --sidebar-primary-foreground: #f2efe7;
+  --sidebar-accent: #dde7f0;
+  --sidebar-accent-foreground: #26517c;
+  --sidebar-border: #d9d3c4;
+  --sidebar-ring: #3368a0;
+
+  --status-new: #4d7ea8;
+  --status-assigned: #3368a0;
+  --status-progress: #a3742a;
+  --status-resolved: #2f7a58;
+  --priority-high: #b5483f;
+  --priority-medium: #a3742a;
+  --priority-low: #2f7a58;
+
+  --shadow-card: 0 1px 2px rgba(23, 33, 43, 0.05), 0 8px 24px -12px rgba(23, 33, 43, 0.14);
+}
+
+/* ---------------------------------------------------------------------------
+   SupportFlow theme — DARK
+   Brand: #3368A0 · #66A3BF · Black
+--------------------------------------------------------------------------- */
+.dark {
+  --brand: #3368a0;
+  --brand-soft: #66a3bf;
+  --brand-deep: #66a3bf;
+
+  --background: #000000;
+  --foreground: #f2efe7;
+  --surface: #10151b;
+  --surface-2: #1a212a;
+  --ink: #f2efe7;
+
+  --card: #10151b;
+  --card-foreground: #f2efe7;
+  --popover: #10151b;
+  --popover-foreground: #f2efe7;
+
+  --primary: #3368a0;
+  --primary-foreground: #f2efe7;
+  --secondary: #66a3bf;
+  --secondary-foreground: #0b1116;
+
+  --muted: #171d24;
+  --muted-foreground: #93a2b1;
+  --accent: #1a2632;
+  --accent-foreground: #a9c6dd;
+
+  --destructive: #cf6a60;
+  --border: #222b35;
+  --input: #2a3440;
+  --ring: #66a3bf;
+
+  --chart-1: #4d84b5;
+  --chart-2: #66a3bf;
+  --chart-3: #4d9b78;
+  --chart-4: #c9a04d;
+  --chart-5: #9488c4;
+
+  --sidebar: #10151b;
+  --sidebar-foreground: #f2efe7;
+  --sidebar-primary: #3368a0;
+  --sidebar-primary-foreground: #f2efe7;
+  --sidebar-accent: #1a2632;
+  --sidebar-accent-foreground: #a9c6dd;
+  --sidebar-border: #222b35;
+  --sidebar-ring: #66a3bf;
+
+  --status-new: #66a3bf;
+  --status-assigned: #4d84b5;
+  --status-progress: #c9a04d;
+  --status-resolved: #4d9b78;
+  --priority-high: #cf6a60;
+  --priority-medium: #c9a04d;
+  --priority-low: #4d9b78;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -16px rgba(0, 0, 0, 0.65);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: initial;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: "cv11", "ss01";
+  }
+  ::selection {
+    background: var(--brand);
+    color: #f2efe7;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Custom utilities
+--------------------------------------------------------------------------- */
+@layer utilities {
+  .font-display {
+    font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .thin-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .thin-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 8px;
+  }
+  .thin-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Status & priority chips */
+.sf-status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  border: 1px solid transparent;
+}
+.sf-status-chip .sf-dot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: currentColor;
+}
+.sf-status-new {
+  color: var(--status-new);
+  background: color-mix(in srgb, var(--status-new) 12%, transparent);
+  border-color: color-mix(in srgb, var(--status-new) 30%, transparent);
+}
+.sf-status-assigned {
+  color: var(--status-assigned);
+  background: color-mix(in srgb, var(--status-assigned) 12%, transparent);
+  border-color: color-mix(in srgb, var(--status-assigned) 30%, transparent);
+}
+.sf-status-in_progress {
+  color: var(--status-progress);
+  background: color-mix(in srgb, var(--status-progress) 13%, transparent);
+  border-color: color-mix(in srgb, var(--status-progress) 32%, transparent);
+}
+.sf-status-resolved {
+  color: var(--status-resolved);
+  background: color-mix(in srgb, var(--status-resolved) 13%, transparent);
+  border-color: color-mix(in srgb, var(--status-resolved) 32%, transparent);
+}
+
+.sf-priority {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: 6px;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+.sf-priority-high {
+  color: var(--priority-high);
+  background: color-mix(in srgb, var(--priority-high) 12%, transparent);
+}
+.sf-priority-medium {
+  color: var(--priority-medium);
+  background: color-mix(in srgb, var(--priority-medium) 13%, transparent);
+}
+.sf-priority-low {
+  color: var(--priority-low);
+  background: color-mix(in srgb, var(--priority-low) 13%, transparent);
+}
+
+/* Landing marquee (ScrollVelocity adaptation) */
+.sf-parallax {
+  position: relative;
+  overflow: hidden;
+}
+.sf-scroller {
+  display: flex;
+  white-space: nowrap;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.sf-scroller > span {
+  flex-shrink: 0;
+}
+
+/* ScrollFloat char animation */
+.sf-scroll-float {
+  overflow: hidden;
+}
+.sf-scroll-float .char {
+  display: inline-block;
+}
+
+/* Circular text badge */
+.sf-circular-text {
+  position: relative;
+  border-radius: 50%;
+  transform-origin: 50% 50%;
+  cursor: default;
+  user-select: none;
+}
+.sf-circular-text span {
+  position: absolute;
+  inset: 0;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Bento card particles */
+.sf-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* Chat conversation bubbles */
+.sf-bubble {
+  border-radius: 14px;
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  max-width: min(85%, 560px);
+  word-break: break-word;
+}
+.sf-bubble-customer {
+  background: var(--brand);
+  color: #f2efe7;
+  border-bottom-right-radius: 4px;
+}
+.sf-bubble-agent {
+  background: var(--card);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-bottom-left-radius: 4px;
+}
+.sf-bubble-system {
+  background: color-mix(in srgb, var(--brand-soft) 10%, transparent);
+  color: var(--muted-foreground);
+  font-size: 0.78rem;
+  text-align: center;
+  max-width: 92%;
+  border: 1px dashed color-mix(in srgb, var(--brand-soft) 35%, transparent);
+}
+.sf-bubble-note {
+  background: color-mix(in srgb, var(--status-progress) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--status-progress) 28%, transparent);
+  color: var(--foreground);
+}
+
+/* Typing indicator dots */
+.sf-typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--muted-foreground);
+  animation: sf-typing 1.2s infinite ease-in-out;
+}
+.sf-typing-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.sf-typing-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes sf-typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+/* Loading shimmer WITHOUT gradients: pulsing blocks */
+.sf-skeleton {
+  background: var(--muted);
+  animation: sf-pulse 1.6s ease-in-out infinite;
+}
+@keyframes sf-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/* Landing dotted grid backdrop — solid SVG dots (no gradients) */
+.sf-dotgrid {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Ccircle cx='1.5' cy='1.5' r='1.5' fill='%233368A0' fill-opacity='0.22'/%3E%3C/svg%3E");
+  background-size: 26px 26px;
+}
