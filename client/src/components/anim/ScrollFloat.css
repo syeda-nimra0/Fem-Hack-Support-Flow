@@ -1,0 +1,33 @@
+.scroll-float {
+  overflow: hidden;
+}
+
+.scroll-float-text {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: clamp(1.6rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--color-text);
+  /* Allow wrapping at word boundaries, never mid-word */
+  word-break: normal;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+/* Each word is an inline-block so it wraps as a unit */
+.word {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+/* Characters within a word animate individually */
+.char {
+  display: inline-block;
+}
+
+.space {
+  display: inline-block;
+}
