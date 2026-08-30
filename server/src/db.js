@@ -12,14 +12,21 @@ let connectionMode = 'unknown';
 
 /** True when running as a serverless function (Vercel) — no embedded DB, no binaries. */
 const isServerless = Boolean(process.env.VERCEL || process.env.SERVERLESS);
-
 export function getConnectionMode() {
   return connectionMode;
 }
 
 async function connectWithMongoose(uri, label) {
   mongoose.set('strictQuery', true);
-  await mongoose.connect(uri, { serverSelectionTimeoutMS: 12000 });
+  // In serverless (Vercel) we must fail FAST: the driver's default timeouts
+  // (30s) are longer than the function's max duration, so Vercel would kill
+  // the request with FUNCTION_INVOCATION_FAILED before Express can return a
+  // clear JSON error. 5s leaves room for a clean error within the budget.
+  const timeoutMs = isServerless ? 5000 : 12000;
+  await mongoose.connect(uri, {
+    serverSelectionTimeoutMS: timeoutMs,
+    connectTimeoutMS: timeoutMs,
+  });
   connectionMode = label;
   const host = mongoose.connection.host || '';
   console.log(`[db] Connected to MongoDB (${label})${host ? ` @ ${host}` : ''}`);
