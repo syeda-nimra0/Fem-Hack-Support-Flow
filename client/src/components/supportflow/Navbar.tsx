@@ -23,8 +23,9 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { label: "Features", target: "features" },
   { label: "How it works", target: "how-it-works" },
+  { label: "Tour", target: "product-tour" },
   { label: "AI Triage", target: "ai-triage" },
-  { label: "Live demo", target: "demo" },
+  { label: "FAQ", target: "faq" },
 ];
 
 function scrollToSection(target: string) {

@@ -33,6 +33,9 @@ import ScrollStack from "./ScrollStack";
 import SlideArrowButton from "./SlideArrowButton";
 import AnimatedCounter from "./AnimatedCounter";
 import TriageDemo from "./TriageDemo";
+import ProductTour from "./ProductTour";
+import Testimonials from "./Testimonials";
+import FAQ from "./FAQ";
 import { useApp } from "@/lib/store";
 
 const FEATURES = [
@@ -332,6 +335,9 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ------------------------------------------------- Product tour (screenshots) */}
+      <ProductTour />
+
       {/* ------------------------------------------------------------ AI triage */}
       <section id="ai-triage" className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-2xl text-center">
@@ -400,6 +406,12 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      {/* ------------------------------------------------------- Testimonials */}
+      <Testimonials />
+
+      {/* ------------------------------------------------------------------ FAQ */}
+      <FAQ />
 
       {/* ------------------------------------------------------------------ CTA */}
       <section className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-16">

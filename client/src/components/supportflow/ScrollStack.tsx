@@ -2,8 +2,12 @@
 
 /**
  * ScrollStack — cards stack on top of each other while scrolling.
- * GSAP ScrollTrigger adaptation of upload/code.md (react-bits ScrollStack),
- * driven by the page's Lenis smooth scroll.
+ *
+ * Implementation note (v2): the original GSAP `pin` + `pinSpacing:false`
+ * approach glitches with Lenis smooth-scroll (cards jump/snap when the pinned
+ * element releases). This version uses native CSS `position: sticky` for the
+ * stacking — which never glitches — and GSAP ScrollTrigger only for a subtle
+ * scale-back scrub as each card gets covered by the next one.
  */
 import { useEffect, useRef, type ReactNode } from "react";
 import gsap from "gsap";
@@ -29,32 +33,25 @@ export default function ScrollStack({ cards, className, cardClassName }: ScrollS
     const ctx = gsap.context(() => {
       const total = cardsRef.current.length;
       cardsRef.current.forEach((card, index) => {
-        if (!card) return;
-        const offset = (total - 1 - index) * 26;
-        const scaleTo = 0.94 - index * 0.035;
+        if (!card || index === total - 1) return; // last card is never covered
 
-        gsap.fromTo(
-          card,
-          { scale: 1, y: offset * 0.4 },
-          {
-            scale: scaleTo,
-            y: offset,
-            ease: "none",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 22%",
-              end: "bottom 30%",
-              scrub: 0.5,
-              pin: index < total - 1,
-              pinSpacing: false,
-              invalidateOnRefresh: true,
-            },
-          }
-        );
+        // As the NEXT card scrolls over this one, gently scale this card back
+        gsap.to(card, {
+          scale: 0.95 - index * 0.012,
+          y: -(6 + index * 3),
+          ease: "none",
+          scrollTrigger: {
+            trigger: cardsRef.current[index + 1] as HTMLDivElement,
+            start: "top bottom",
+            end: "top 25%",
+            scrub: 0.6,
+            invalidateOnRefresh: true,
+          },
+        });
       });
     }, section);
 
-    // Recalculate once fonts settle
+    // Recalculate once fonts/images settle
     const refresh = () => ScrollTrigger.refresh();
     const timer = setTimeout(refresh, 600);
     return () => {
@@ -73,10 +70,14 @@ export default function ScrollStack({ cards, className, cardClassName }: ScrollS
           }}
           className={cn(
             "will-change-transform",
-            index > 0 && "-mt-8",
+            // Sticky stacking: each card parks slightly lower than the previous
+            // one so the pile peeks out — pure CSS, smooth with any scroller.
+            "sticky",
+            index > 0 && "mt-6 sm:mt-8",
             "rounded-3xl border border-border bg-card shadow-card",
             cardClassName
           )}
+          style={{ top: `calc(5.5rem + ${index * 0.9}rem)` }}
         >
           {card}
         </div>

@@ -123,6 +123,7 @@
   --priority-low: #2f7a58;
 
   --shadow-card: 0 1px 2px rgba(23, 33, 43, 0.05), 0 8px 24px -12px rgba(23, 33, 43, 0.14);
+  --shadow-elev: 0 2px 4px rgba(23, 33, 43, 0.06), 0 24px 48px -20px rgba(23, 33, 43, 0.28);
 }
 
 /* ---------------------------------------------------------------------------
@@ -184,6 +185,7 @@
   --priority-low: #4d9b78;
 
   --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -16px rgba(0, 0, 0, 0.65);
+  --shadow-elev: 0 2px 4px rgba(0, 0, 0, 0.45), 0 28px 56px -20px rgba(0, 0, 0, 0.8);
 }
 
 @layer base {
@@ -215,6 +217,10 @@
 
   .shadow-card {
     box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elev {
+    box-shadow: var(--shadow-elev);
   }
 
   .no-scrollbar::-webkit-scrollbar {

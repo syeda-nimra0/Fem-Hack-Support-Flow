@@ -14,9 +14,14 @@
 const TOKEN_KEY = "supportflow_token";
 const USER_KEY = "supportflow_user";
 
-export const API_URL =
+// Normalize: strip trailing slashes so `${API_URL}/api/...` never produces a
+// double slash (e.g. VITE_API_URL="https://x.vercel.app/" would request
+// "https://x.vercel.app//api/auth/login" — Vercel answers that with a 308
+// redirect that carries NO CORS headers, so browsers report a CORS error).
+export const API_URL = (
   (import.meta.env.VITE_API_URL as string | undefined) ||
-  "http://localhost:3001";
+  "http://localhost:3001"
+).replace(/\/+$/, "");
 
 export const SOCKET_URL =
   (import.meta.env.VITE_SOCKET_URL as string | undefined) || "";

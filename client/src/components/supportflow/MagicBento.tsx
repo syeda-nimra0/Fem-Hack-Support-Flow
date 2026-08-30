@@ -133,7 +133,8 @@ function ParticleCard({
       if (enableTilt) {
         gsap.to(element, { rotateX: 4, rotateY: -4, duration: 0.35, ease: "power2.out", transformPerspective: 900 });
       }
-      gsap.to(element.querySelector(".sf-bento-ring"), { opacity: 1, duration: 0.3 });
+      const ring = element.querySelector(".sf-bento-ring");
+      if (ring) gsap.to(ring, { opacity: 1, duration: 0.3 });
     };
     const onMouseMove = (event: MouseEvent) => {
       if (!enableTilt || !isHovered.current) return;
@@ -148,7 +149,8 @@ function ParticleCard({
       if (enableTilt) {
         gsap.to(element, { rotateX: 0, rotateY: 0, duration: 0.4, ease: "power2.out" });
       }
-      gsap.to(element.querySelector(".sf-bento-ring"), { opacity: 0, duration: 0.3 });
+      const ring = element.querySelector(".sf-bento-ring");
+      if (ring) gsap.to(ring, { opacity: 0, duration: 0.3 });
     };
 
     element.addEventListener("mouseenter", onMouseEnter);
